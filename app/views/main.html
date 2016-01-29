@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Cancer name and samples</h2>
+
+  <!-- Todos input -->
+  <form role="form" ng-submit="addVirtualStudy()">
+    <div class="row">
+      <div class="input-group">
+        <input type="text" ng-model="virtualStudyName" placeholder="Study Name?" class="form-control">
+          <input type="text" ng-model="virtualStudyDesc" placeholder="Study Description?" class="form-control">
+          <input type="text" ng-model="virtualStudycolor" placeholder="Study Color?" class="form-control">
+
+          <ul>
+            <input type="button" ng-click="addCancerStudySamples()" value="Add Cancer Study Samples"></input>
+
+              <li ng-repeat="item in items" id="item{{item.cancerStudy}}">
+                 <input type="text" ng-model="item.cancerStudy" placeholder="Cancer Study" class="form-control" required>
+                 <input type="text" ng-model="item.samplesList" placeholder="Samples List(Ex : abc1,abc2)" class="form-control" required>
+                 <input type="button" ng-click="deleteList($index)" value="Delete"></input>
+          </ul>
+        <span class="input-group-btn">
+          <input type="submit" class="btn btn-primary" value="Add">
+        </span>
+      </div>
+    </div>
+  </form>
+
+<!-- Todos list -->
+<div ui-sortable ng-model="virtualStudies">
+  <p class="input-group" ng-repeat="virtualStudy in virtualStudies" style="padding:5px 10px; cursor: move;">
+    <input type="text" ng-model="virtualStudy" class="form-control">
+    <span class="input-group-btn">
+      <button class="btn btn-danger" ng-click="removeVirtualStudy($index)" aria-label="Remove">X</button>
+    </span>
+  </p>
+</div>
+
+</div>
